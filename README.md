@@ -10,38 +10,34 @@
 ```
 pytest_automation_framework/
 │
-├── config/                  # 配置文件目錄
+├── config/                  # 設置文件目錄
 │   ├── __init__.py
-│   ├── config.py            # 基本配置(URL、瀏覽器類型等)
-│   └── environment.py       # 環境變數配置
+│   ├── config.py            # 基本設置(URL、瀏覽器類型等)
+│   └── environment.py       # 環境變數設置
 │
-├── pages/                   # 頁面對象目錄(POM核心)
+├── pages/                   # 頁面對象目錄
 │   ├── __init__.py
 │   ├── base_page.py         # 基礎頁面類
-│   ├── login_page.py        # 登入頁面
-│   └── dashboard_page.py    # 儀表板頁面
+│   └── login_page.py        # 登入頁面
 │
-├── tests/                   # 測試用例目錄
+├── test_cases/              # 測試案例目錄
 │   ├── __init__.py
-│   ├── conftest.py          # Pytest配置和固件
-│   ├── test_login.py        # 登入測試用例
-│   └── test_dashboard.py    # 儀表板測試用例
+│   ├── conftest.py          # Pytest設置和常數設定
+│   └── test_login.py        # 登入測試案例
 │
 ├── utils/                   # 工具類目錄
 │   ├── __init__.py
 │   ├── driver_factory.py    # WebDriver工廠類
-│   ├── logger.py            # 日誌工具
-│   └── wait_helper.py       # 等待輔助工具
+│   ├── log_tool.py          # log工具
+│   └── wait_tool.py         # 等待輔助工具
 │
-├── resources/               # 資源文件目錄
-│   ├── test_data/           # 測試數據
-│   └── downloads/           # 下載文件
+├── resources/               # 資料文件目錄
+│   └── test_datas/          # 測試資料
 │
 ├── reports/                 # 測試報告目錄
-│   └── allure_results/      # Allure報告數據
 │
-├── Jenkinsfile              # Jenkins流水線配置
-├── pytest.ini               # Pytest配置文件
-├── requirements.txt         # 項目依賴
-└── README.md                # 項目說明
+├── Jenkinsfile              # Jenkins設置文件
+├── pytest.ini               # Pytest設置文件
+├── requirements.txt         # 專案依賴
+└── README.md                # 專案說明
 ```
