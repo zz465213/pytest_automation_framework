@@ -9,46 +9,39 @@
 ## 2. 框架目錄結構
 ```
 pytest_automation_framework/
-├── tests/                      # 測試案例目錄
-│   ├── api/                    # API 測試案例
-│   │   └── test_***.py
-│   ├── web_selenium/           # Selenium Web UI 測試案例
-│   │   └── test_***.py
-│   ├── web_playwright/         # Playwright Web UI 測試案例
-│   │   └── test_***.py
-│   └── mobile_appium/          # Appium Mobile App 測試案例
-│       └── test_***.py
-├── framework/                  # 框架核心程式碼
-│   ├── base/                   # 基礎類別和輔助函式
-│   │   ├── api_base.py         # API 請求基礎類別
-│   │   ├── web_base_selenium.py # Selenium Web UI 測試基礎頁面/操作類別
-│   │   ├── web_base_playwright.py # Playwright Web UI 測試基礎頁面/操作類別
-│   │   └── mobile_base_appium.py # Appium Mobile App 測試基礎頁面/操作類別
-│   ├── utils/                  # 通用工具模組
-│   │   ├── config_manager.py   # 設定檔讀取與管理
-│   │   ├── logger.py           # 日誌記錄
-│   │   └── reporting_utils.py  # 報告相關輔助 (例如：截圖)
-│   ├── pages/                  # Page Object Model (POM) 相關頁面物件
-│   │   ├── web_selenium_pages/
-│   │   │   └── login_page_selenium.py
-│   │   ├── web_playwright_pages/
-│   │   │   └── home_page_playwright.py
-│   │   └── mobile_appium_pages/
-│   │       └── welcome_page_appium.py
-│   └── drivers/                # WebDriver 和 Appium Driver 管理
-│       ├── browser_factory_selenium.py  # Selenium 瀏覽器驅動工廠
-│       ├── browser_factory_playwright.py # Playwright 瀏覽器實例管理
-│       └── appium_driver_manager.py    # Appium 驅動管理
-├── config/                     # 設定檔目錄
-│   ├── config.ini              # 主要設定檔 (或 .yaml, .json)
-│   ├── environments/           # 環境特定設定檔
-│   │   ├── dev.ini
-│   │   └── staging.ini
-│   └── test_data/              # 測試數據 (可為 .json, .csv, .yaml 等)
-│       └── users.json
-├── reports/                    # 測試報告存放目錄 (e.g., Allure reports)
-├── logs/                       # 日誌檔案存放目錄
-├── conftest.py                 # Pytest 的本地 plugin，定義全局 fixtures
-├── requirements.txt            # 專案依賴套件
-└── README.md                   # 專案說明文件
+│
+├── config/                  # 配置文件目錄
+│   ├── __init__.py
+│   ├── config.py            # 基本配置(URL、瀏覽器類型等)
+│   └── environment.py       # 環境變數配置
+│
+├── pages/                   # 頁面對象目錄(POM核心)
+│   ├── __init__.py
+│   ├── base_page.py         # 基礎頁面類
+│   ├── login_page.py        # 登入頁面
+│   └── dashboard_page.py    # 儀表板頁面
+│
+├── tests/                   # 測試用例目錄
+│   ├── __init__.py
+│   ├── conftest.py          # Pytest配置和固件
+│   ├── test_login.py        # 登入測試用例
+│   └── test_dashboard.py    # 儀表板測試用例
+│
+├── utils/                   # 工具類目錄
+│   ├── __init__.py
+│   ├── driver_factory.py    # WebDriver工廠類
+│   ├── logger.py            # 日誌工具
+│   └── wait_helper.py       # 等待輔助工具
+│
+├── resources/               # 資源文件目錄
+│   ├── test_data/           # 測試數據
+│   └── downloads/           # 下載文件
+│
+├── reports/                 # 測試報告目錄
+│   └── allure_results/      # Allure報告數據
+│
+├── Jenkinsfile              # Jenkins流水線配置
+├── pytest.ini               # Pytest配置文件
+├── requirements.txt         # 項目依賴
+└── README.md                # 項目說明
 ```
