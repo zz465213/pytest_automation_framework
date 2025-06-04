@@ -1,0 +1,10 @@
+yahoo:
+  local:
+    url: "https://tw.yahoo.com/"
+  ut:
+    url: "https://us.yahoo.com/"
+  sit:
+    url: "https://hk.yahoo.com/"
+  uat:
+    url: "https://uk.yahoo.com/"
+
