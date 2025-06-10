@@ -10,14 +10,14 @@ env/
 .pipenv/
 
 # IDE 和編輯器設定
-.idea/             # PyCharm/IntelliJ IDEA
-.vscode/           # VS Code
-*.iml              # IntelliJ IDEA
-.project           # Eclipse
-.pydevproject      # PyDev for Eclipse
-.settings/         # Eclipse
-*.sublime-project  # Sublime Text
-*.sublime-workspace # Sublime Text
+.idea/      
+.vscode     
+*.iml    
+.project
+.pydevproject
+.settings
+*.sublime-project
+*.sublime-workspace
 
 # 測試相關
 .pytest_cache/
