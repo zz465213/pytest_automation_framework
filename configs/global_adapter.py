@@ -1,18 +1,21 @@
 from datetime import datetime
 import platform
 import selenium
+import requests
 import sys
 
 #  ---- 時間設定 ----
 NOWTIME = datetime.now().strftime("%Y%m%d_%H%M%S")
 
 #  ---- 測試環境資訊 ----
-BROWSER = "chrome"
 ENV = "local"
+TEST_TYPE = "web"
+BROWSER = ""
 URL = ""
 PLATFORM = platform.system() + " " + platform.release()
 PYTHON_VERSION = sys.version.split()[0]
 SELENIUM_VERSION = selenium.__version__
+REQUESTS_VERSION = requests.__version__
 
 #  ---- Driver 設定 ----
 # options設定

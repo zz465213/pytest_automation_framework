@@ -14,6 +14,11 @@ pytest_automation_framework/
 │   ├── allure-2.24.0.tgz
 │   └── openjdk-11+28_linux-x64_bin.tar.gz    
 │
+├── api/                     # api物件
+│   ├── __init__.py
+│   ├── base_api.py          # 基礎api類
+│   └── ***_api.py           # api物件
+│
 ├── configs/                 # 設置文件目錄
 │   ├── __init__.py
 │   ├── common_paths.py      # 共用路徑
@@ -22,7 +27,7 @@ pytest_automation_framework/
 │
 ├── logs/                    # 日誌目錄
 │
-├── pages/                   # 頁面對象目錄
+├── pages/                   # 頁面物件
 │   ├── __init__.py
 │   ├── base_page.py         # 基礎頁面類
 │   └── ***_page.py          # 頁面物件
@@ -30,15 +35,16 @@ pytest_automation_framework/
 ├── reports/                 # 測試報告目錄
 │
 ├── resources/               # 資料文件目錄
+│   ├── payloads/            # api payloads 資料
+│   └── test_data/           # 測試資料
 │
-├── testcases/              # 測試案例目錄
+├── testcases/               # 測試案例目錄
 │   ├── __init__.py
 │   └── test_***.py          # 測試案例
 │
 ├── utils/                   # 工具類目錄
 │   ├── __init__.py
 │   ├── allure_factory.py    # Allure Report 工廠類
-│   ├── api_factory.py       # API 工廠類
 │   ├── driver_factory.py    # WebDriver 工廠類
 │   └── file_tool.py         # 文件操作小工具
 │
@@ -49,7 +55,7 @@ pytest_automation_framework/
 ├── pytest.ini               # Pytest設置文件
 ├── README.md 
 ├── requirements.txt
-└── run.py                   # 測試路口
+└── run.py                   # 執行路口
 ```
 
 ## 3. 無法產生 Allure Report?

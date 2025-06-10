@@ -1,0 +1,10 @@
+{
+  "posts_headers": {
+    "Content-Type": "application/json; charset=UTF-8"
+  },
+  "posts_body": {
+    "title": "我的第一篇 requests 貼文",
+    "body": "這是使用 Python requests 庫發送的 POST 請求內容",
+    "userId": 10
+  }
+}

@@ -9,11 +9,10 @@ import time
 
 class BasePage:
     def __init__(self, driver, url):
+        self.logger = logging.getLogger(__name__)
         self.driver = driver
         self.url = url
-        self.logger = logging.getLogger(__name__)
         self.allure_factory = AllureFactory()
-        self.original_styles = {}
 
     def open_page(self):
         """輸入 URL 開啟頁面"""
@@ -105,11 +104,8 @@ class BasePage:
         """獲取多筆元素文字"""
         elements = self.find_elements(locator)
         locator_str = self._format_locator(locator)
-        texts = []
         try:
-            for element in elements:
-                text = element.text.strip()
-                texts.append(text)
+            texts = [element.text.strip() for element in elements]
             self.logger.info(f"🟢 獲取 {locator_str} 元素文字成功")
             if global_adapter.ELEMENT_ACTION_SCREENSHOTS:
                 self.allure_factory.take_screenshot(self.driver, "get_text_passed")
@@ -189,9 +185,7 @@ class BasePage:
             raise Exception(error_msg)
 
     def _highlight_element(self, element, blink_speed=0.1):
-        """為元素添加邊框顏色閃爍效果"""
-        import time
-
+        """為元素添加邊框顏色閃爍高光效果"""
         try:
             # 先滾動到元素位置
             self.driver.execute_script("""

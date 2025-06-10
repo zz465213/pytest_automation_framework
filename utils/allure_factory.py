@@ -61,38 +61,47 @@ class AllureFactory:
         return final_report_path
 
     @staticmethod
-    def get_selenium_environment_data(browser, env, url):
+    def get_selenium_environment_data(env, test_type, browser, url):
         """
         產生測試環境資訊的字典。
 
         Args:
-            browser (str): 瀏覽器名稱
             env (str): 環境名稱
+            test_type(str): 測試類型
+            browser (str): 瀏覽器名稱
             url (str): 測試 URL
 
         Returns:
             dict: 包含測試環境資訊的字典
         """
-        return {
-            "URL": url,
-            "Browser": browser,
-            "Environment": env,
+        env_data = {
+            "TestType": test_type.upper(),
+            "Environment": env.capitalize(),
             "Platform": global_adapter.PLATFORM,
-            "Python Version": global_adapter.PYTHON_VERSION,
-            "Selenium Version": global_adapter.SELENIUM_VERSION
+            "PythonVersion": global_adapter.PYTHON_VERSION,
         }
 
-    def setup_environment_info(self, browser, env, url):
+        if test_type in ["web", "app"]:
+            env_data["Browser"] = browser
+            env_data["URL"] = url
+        if test_type == "web":
+            env_data["SeleniumVersion"] = global_adapter.SELENIUM_VERSION
+        elif test_type == "api":
+            env_data["RequestsVersion"] = global_adapter.REQUESTS_VERSION
+        return env_data
+
+    def setup_environment_info(self, env, test_type, browser, url):
         """
         設定測試環境資訊到 Allure 報告。
 
         Args:
-            browser (str): 瀏覽器名稱
             env (str): 環境名稱
+            test_type(str): 測試類型
+            browser (str): 瀏覽器名稱
             url (str): 測試 URL
         """
         # 從獨立函數獲取環境數據
-        env_data = self.get_selenium_environment_data(browser, env, url)
+        env_data = self.get_selenium_environment_data(env, test_type, browser, url)
 
         # 確保 Allure 結果目錄存在
         os.makedirs(ALLURE_RESULTS_DIR, exist_ok=True)

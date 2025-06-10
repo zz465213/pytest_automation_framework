@@ -4,84 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="456fc309-d20b-4c13-b11d-9009eb1360dc" name="Changes" comment="feat/封裝assert &amp; 新增截圖全域判斷 &amp; 增加高光效果">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/data/attachments/5846618076a537ae.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/data/behaviors.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/data/behaviors.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/data/categories.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/data/categories.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/data/packages.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/data/suites.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/data/suites.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/data/test-cases/244d1ba9258f16d9.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/data/timeline.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/export/influxDbData.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/export/mail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/export/prometheusData.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/history/categories-trend.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/history/duration-trend.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/history/history-trend.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/history/history.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/history/retry-trend.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/plugin/behaviors/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/plugin/packages/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/plugin/screen-diff/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/plugin/screen-diff/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/widgets/behaviors.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/widgets/categories-trend.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/widgets/categories.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/widgets/duration-trend.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/widgets/duration.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/widgets/environment.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/widgets/executors.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/widgets/history-trend.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/widgets/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/widgets/retry-trend.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/widgets/severity.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/widgets/status-chart.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/widgets/suites.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_report/widgets/summary.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/03797887-2a25-482f-99ba-dcf538a64bfa-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/067b1091-2834-430a-a9d3-082c3b28da2f-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/0b32d173-24aa-4861-938c-22fcda6b204e-attachment.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/0ca4fb60-8ac1-4373-bfb8-f63d312ab63e-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/0d74419e-3fc6-408d-b0bc-cbbd31f5f6fc-attachment.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/0dbd8953-aa32-4a93-8ed0-d05fdc528cd5-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/1271c0cd-490e-408f-98a5-c2541f298236-attachment.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/157a8626-39ca-42af-a908-2332ae5dff0d-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/1cec63d2-af93-4d13-9e45-39148b16427c-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/1d8093ef-e96e-43ee-a9eb-02ad9e7069e0-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/3345f375-4507-4117-badb-48dfac1b746b-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/34f4a0c7-ee38-4145-9efa-07529088c0bd-attachment.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/460f8737-45a8-4887-a485-afb03202bf68-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/4c5967e5-8a74-43d3-a85e-6176886a94c3-attachment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/5ea31e9c-a612-488a-a29c-2350afb44114-attachment.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/5ebb9d3b-ee2e-4353-8d4d-0737825d1397-attachment.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/7556b827-9abf-4e7b-88ad-6cb7aa23eb05-attachment.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/75ad8751-180b-45d9-8530-36db2792b477-attachment.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/76f57e19-95db-4807-a345-94f082f08624-attachment.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/7e339efd-f934-4f7c-9b03-a8731d512c97-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/82283f7f-795a-438f-a31e-7922ce3bbc80-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/82c9b6c5-bccf-4599-9f3f-1aef25a43120-attachment.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/9067f20c-76a2-4f2f-9c6d-f0340ab33819-result.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/91132e52-be30-4d37-b905-2b8d4f75738e-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/96a0812c-1583-4ea7-b662-80c32df987de-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/b0343147-b3d0-4260-abcc-7b7e49d4d7ff-attachment.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/b233fb7e-361d-4ff4-a361-015f011154b6-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/b429abb1-2380-42b1-917a-4dce366a082d-attachment.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/b9f13320-f258-4da0-a248-69ec062b4c7f-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/be02a1a5-87ab-4126-8b6e-7fa55e869484-attachment.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/c2dcf71c-dd44-4885-9698-4b79ec611080-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/d0e61ebf-3837-40db-b0a2-ba8d611dd5b0-attachment.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/e07196b3-e3f7-48f4-96f9-e81470ed1912-container.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/environment.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/reports/allure_results/f1c83e3f-171e-4c4b-9b09-bc3ad70aabd5-attachment.jpg" beforeDir="false" />
+    <list default="true" id="ccb58ac1-56d6-470f-bb21-9e1e64d90def" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,45 +26,37 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
+  &quot;associatedIndex&quot;: 1
 }</component>
-  <component name="ProjectId" id="2xPM4FqS06wW1OiFEgGYktPGVee" />
+  <component name="ProjectId" id="2y3DGdOuiT35wgE8n26wtaLuWik" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Python tests.Python tests for test_yahoo_portal.TestYahooPortal.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_yahoo_portal.TestYahooPortal.test_valid_search.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_yahoo_protal.TestLogin.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for test_yahoo_protal.TestLogin.test_valid_search.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in test_data_manager.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__init__.executor&quot;: &quot;Run&quot;,
-    &quot;Python.paths.executor&quot;: &quot;Run&quot;,
+    &quot;Python.file_tool.executor&quot;: &quot;Run&quot;,
     &quot;Python.run.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/USER/Desktop/pytest_automation_framework/testcases&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;new__dev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/USER/Desktop/QA/pytest_automation_framework&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\USER\Desktop\pytest_automation_framework\testcases" />
-      <recent name="C:\Users\USER\Desktop\pytest_automation_framework\utils" />
+      <recent name="C:\Users\USER\Desktop\QA\pytest_automation_framework\testcases\api" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\USER\Desktop\pytest_automation_framework\allure_requirements" />
-      <recent name="C:\Users\USER\Desktop\pytest_automation_framework" />
-      <recent name="C:\Users\USER\Desktop\pytest_automation_framework\testcases\yahoo" />
-      <recent name="C:\Users\USER\Desktop\pytest_automation_framework\config" />
-      <recent name="C:\Users\USER\Desktop\pytest_automation_framework\utils" />
+      <recent name="C:\Users\USER\Desktop\QA\pytest_automation_framework\testcases\test" />
+      <recent name="C:\Users\USER\Desktop\QA\pytest_automation_framework\testcases\web" />
     </key>
   </component>
   <component name="RunManager" selected="Python.run">
-    <configuration name="paths" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="file_tool" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pytest_automation_framework" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -149,11 +65,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/config" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/config/paths.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/file_tool.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -184,58 +100,10 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for testcases.yahoo.test_yahoo_portal" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="pytest_automation_framework" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testcases" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testcases.yahoo.test_yahoo_portal&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for testcases.yahoo.test_yahoo_portal.TestYahooPortal" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="pytest_automation_framework" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testcases" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testcases.yahoo.test_yahoo_portal.TestYahooPortal&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for testcases.yahoo.test_yahoo_portal.TestYahooPortal.test_valid_search" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="pytest_automation_framework" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testcases" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testcases.yahoo.test_yahoo_portal.TestYahooPortal.test_valid_search&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.run" />
-        <item itemvalue="Python.paths" />
-        <item itemvalue="Python tests.Python tests for testcases.yahoo.test_yahoo_portal.TestYahooPortal.test_valid_search" />
-        <item itemvalue="Python tests.Python tests for testcases.yahoo.test_yahoo_portal.TestYahooPortal" />
-        <item itemvalue="Python tests.Python tests for testcases.yahoo.test_yahoo_portal" />
+        <item itemvalue="Python.file_tool" />
       </list>
     </recent_temporary>
   </component>
@@ -249,50 +117,22 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="456fc309-d20b-4c13-b11d-9009eb1360dc" name="Changes" comment="" />
-      <created>1747835061909</created>
+      <changelist id="ccb58ac1-56d6-470f-bb21-9e1e64d90def" name="Changes" comment="" />
+      <created>1749054268314</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1747835061909</updated>
+      <updated>1749054268314</updated>
     </task>
-    <task id="LOCAL-00001" summary="feat/框架origin版本">
-      <option name="closed" value="true" />
-      <created>1747835776170</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1747835776170</updated>
-    </task>
-    <task id="LOCAL-00002" summary="feat/封裝assert &amp; 新增截圖全域判斷 &amp; 增加高光效果">
-      <option name="closed" value="true" />
-      <created>1748447700293</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1748447700293</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat/框架origin版本" />
-    <MESSAGE value="feat/封裝assert &amp; 新增截圖全域判斷 &amp; 增加高光效果" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat/封裝assert &amp; 新增截圖全域判斷 &amp; 增加高光效果" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/testcases/yahoo/test_yahoo_portal.py</url>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/pages/base_page.py</url>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="__loader__" />
-        <watch expression="url" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

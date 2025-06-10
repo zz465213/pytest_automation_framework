@@ -1,3 +1,5 @@
+import csv
+import json
 import logging
 import os
 import shutil
@@ -16,6 +18,8 @@ def cleanup_folder(temp_dir):
 
 def rename_file(old_path, new_path):
     """重命名文件"""
+    if not os.path.exists(old_path):
+        raise FileNotFoundError(f"🔴 找不到文件資料: {old_path}")
     if os.path.exists(old_path):
         os.rename(old_path, new_path)
         return new_path
@@ -25,9 +29,31 @@ def rename_file(old_path, new_path):
 
 
 def read_yaml(file_path):
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"🔴 找不到文件資料: {file_path}")
     with open(file_path, 'r', encoding='utf-8') as f:
         configs = yaml.load(f, Loader=yaml.FullLoader)
         return configs
+
+
+def read_json(file_path):
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"🔴 找不到文件資料: {file_path}")
+    with open(file_path, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+def read_data_from_csv(file_path, skip_header=True):
+    data = []
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"🔴 找不到文件資料: {file_path}")
+    with open(file_path, 'r', encoding='utf-8') as file:
+        reader = csv.reader(file)
+        if skip_header:
+            next(reader)
+        for row in reader:
+            data.append(tuple(row))  # 將每一行轉換為字典
+    return data
 
 
 def write_file(file_path, content):

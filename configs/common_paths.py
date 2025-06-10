@@ -15,8 +15,10 @@ ALLURE_REPORT_DIR = os.path.join(REPORT_DIR, "allure_report")
 # 測案相關
 TESTCASES_DIR = os.path.join(ROOT_DIR, "testcases")
 
-# 資源相關
+# 資料相關
 RESOURCES_DIR = os.path.join(ROOT_DIR, "resources")
+PAYLOADS_DIR = os.path.join(RESOURCES_DIR, "payloads")
+TEST_DATA_DIR = os.path.join(RESOURCES_DIR, "test_data")
 
 # 配置相關
 CONFIGS_DIR = os.path.join(ROOT_DIR, "configs")
@@ -28,4 +30,6 @@ os.makedirs(LOG_DIR, exist_ok=True)
 os.makedirs(REPORT_DIR, exist_ok=True)
 os.makedirs(TESTCASES_DIR, exist_ok=True)
 os.makedirs(RESOURCES_DIR, exist_ok=True)
+os.makedirs(PAYLOADS_DIR, exist_ok=True)
+os.makedirs(TEST_DATA_DIR, exist_ok=True)
 os.makedirs(CONFIGS_DIR, exist_ok=True)
