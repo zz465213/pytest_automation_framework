@@ -1,0 +1,61 @@
+import pytest
+import allure
+from pages.yahoo_portal_page import YahooPortalPage
+
+
+@allure.epic("Yahoo搜尋測試")
+@allure.feature("搜尋飯店")
+class TestYahooPortal:
+    @allure.story("測試參數化輸入，正向搜尋飯店且驗證飯店所在縣市是否包含在標題內")
+    @allure.severity(allure.severity_level.CRITICAL)
+    @pytest.mark.yahoo
+    @pytest.mark.parametrize(
+        "search_input, expect_result",
+        [
+            ("台南飯店", "台南"),
+            ("台中飯店", "台中"),
+            ("台北飯店", "台北")
+        ]
+    )
+    def test_param_search(self, get_driver, get_url, search_input, expect_result):
+        # Arrange
+        login_page = YahooPortalPage(driver=get_driver, url=get_url)
+
+        # Action
+        login_page.open_page()
+        login_page.search_result(search_input)
+
+        # Assert
+        for actual_result in login_page.get_result_title_texts():
+            login_page.assert_include(expect_result, actual_result)
+
+    @allure.story("正向測試，搜尋飯店且驗證飯店所在縣市是否包含在標題內")
+    @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.yahoo
+    def test_valid_search(self, get_driver, get_url):
+        # Arrange
+        login_page = YahooPortalPage(driver=get_driver, url=get_url)
+
+        # Action
+        login_page.open_page()
+        login_page.search_result("台北飯店")
+
+        # Assert
+        for actual_result in login_page.get_result_title_texts():
+            login_page.assert_include("台北", actual_result)
+
+    @allure.story("反向測試，搜尋飯店且錯誤驗證飯店所在縣市是否包含在標題內")
+    @allure.severity(allure.severity_level.TRIVIAL)
+    @pytest.mark.yahoo
+    @pytest.mark.fail
+    def test_fail_search(self, get_driver, get_url):
+        # Arrange
+        login_page = YahooPortalPage(driver=get_driver, url=get_url)
+
+        # Action
+        login_page.open_page()
+        login_page.search_result("台南飯店")
+
+        # Assert
+        for actual_result in login_page.get_result_title_texts():
+            login_page.assert_include("台中", actual_result)

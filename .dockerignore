@@ -1,0 +1,61 @@
+# Git 相關
+.git
+.gitignore
+
+# IDE 和編輯器設定 (這些在映像檔中不需要)
+.idea/
+.vscode/
+*.iml
+.project
+.pydevproject
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# 虛擬環境 (這些通常會在 Dockerfile 中重新建立)
+.venv/
+venv/
+env/
+.pipenv/
+
+# 環境變數和敏感資料 (絕不應將這些包含在映像檔中)
+.env
+.flaskenv
+.secrets.toml
+
+# 日誌檔 (通常不應包含在映像檔中，或應在容器啟動時處理)
+*.log
+logs/
+
+# 暫存或編譯輸出 (如果這些會在 Dockerfile 中重新產生)
+__pycache__/
+__pycache__
+*.pyc
+dist/
+build/
+*.egg-info/
+.eggs/
+
+# 文檔 (除非您的映像檔需要包含文檔)
+README.md
+LICENSE.md
+docs/
+
+# 數據庫檔案 (除非您的應用程式將資料庫作為一部分)
+*.sqlite3
+*.db
+*.db-journal
+
+# 上傳檔案或媒體 (這些通常會透過卷掛載處理)
+media/
+uploads/
+
+# 作業系統相關 (對 Docker 映像檔無用)
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Docker 本身相關
+Dockerfile
+.dockerignore
