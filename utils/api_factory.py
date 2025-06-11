@@ -2,7 +2,7 @@ import requests
 import logging
 
 
-class BaseAPI:
+class APIFactory:
     def __init__(self, url):
         self.logger = logging.getLogger(__name__)
         self.session = requests.Session()
@@ -41,3 +41,31 @@ class BaseAPI:
 
     def delete(self, endpoint, **kwargs):
         return self._send_request("DELETE", endpoint, **kwargs)
+
+    def assert_equal(self, expect_result, actual_result):
+        """
+        斷言預期結果與實際結果是否相等。
+        """
+        try:
+            assert expect_result == actual_result
+            self.logger.info(f"🟢 PASSED - 預期結果: {expect_result}, 實際結果: {actual_result}")
+        except AssertionError as e:
+            error_msg = f"🔴 FAILED - 預期结果: {expect_result}, 實際結果: {actual_result}, 錯誤訊息: {e}"
+            raise Exception(error_msg)
+        except Exception as e:
+            error_msg = f"🔴 FAILED - 斷言過程發生非預期錯誤:{e}, 預期结果: {expect_result}, 實際結果: {actual_results}"
+            raise Exception(error_msg)
+
+    def assert_include(self, expect_result, actual_result):
+        """
+        斷言預期結果是否包含在實際結果中。
+        """
+        try:
+            assert expect_result in actual_result
+            self.logger.info(f"🟢 PASSED - 預期結果: {expect_result}, 實際結果: {actual_result}")
+        except AssertionError as e:
+            error_msg = f"🔴 FAILED - 預期结果: {expect_result}, 實際結果: {actual_result}, 錯誤訊息: {e}"
+            raise Exception(error_msg)
+        except Exception as e:
+            error_msg = f"🔴 FAILED - 斷言過程發生非預期錯誤:{e}, 預期结果: {expect_result}, 實際結果: {actual_result}"
+            raise Exception(error_msg)

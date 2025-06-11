@@ -1,4 +1,5 @@
-# Pytest 自動化測試框架設計
+# 自動化測試框架
+
 ## 1. 框架設計理念
 - 模組化 (Modularity): 將不同功能的程式碼組織在獨立的模組中，方便管理和維護。
 - 可重用性 (Reusability): 透過 fixtures page objects 等方式提高程式碼的重用性。
@@ -16,8 +17,7 @@ pytest_automation_framework/
 │
 ├── api/                     # api物件
 │   ├── __init__.py
-│   ├── base_api.py          # 基礎api類
-│   └── ***_api.py           # api物件
+│   └── ***_api.py           # api實體
 │
 ├── configs/                 # 設置文件目錄
 │   ├── __init__.py
@@ -30,7 +30,7 @@ pytest_automation_framework/
 ├── pages/                   # 頁面物件
 │   ├── __init__.py
 │   ├── base_page.py         # 基礎頁面類
-│   └── ***_page.py          # 頁面物件
+│   └── ***_page.py          # 頁面實體
 │
 ├── reports/                 # 測試報告目錄
 │
@@ -44,7 +44,8 @@ pytest_automation_framework/
 │
 ├── utils/                   # 工具類目錄
 │   ├── __init__.py
-│   ├── allure_factory.py    # Allure Report 工廠類
+│   ├── allure_factory.py    # Allure 工廠類
+│   ├── api_factory.py       # API 工廠類
 │   ├── driver_factory.py    # WebDriver 工廠類
 │   └── file_tool.py         # 文件操作小工具
 │
@@ -58,7 +59,7 @@ pytest_automation_framework/
 └── run.py                   # 執行路口
 ```
 
-## 3. 無法產生 Allure Report?
+## 3. Allure 環境設置:
 - 安裝[JDK](<https://www.oracle.com/java/technologies/downloads/>):
   1. 到官網安裝JDK
   2. JDK加 $JAVA_HOME 環境變數當中
@@ -69,7 +70,9 @@ pytest_automation_framework/
   3. 將bin檔加到環境變數當中
   4. cmd輸入``` allure --version ``` 看到版本號表示安裝成功
 
-## 4. 如何 build Docker image
+## 4. Appium 環境設置:
+
+
+## 5. 如何 Build Docker Image
 - docker build -t {映像檔名稱}:{映像檔標記} .
 - docker run --rm -it -v /$(pwd):/test {映像檔名稱}:{映像檔標記} bash
-

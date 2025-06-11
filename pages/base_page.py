@@ -144,42 +144,42 @@ class BasePage:
             self.allure_factory.take_screenshot(self.driver, "move_failed")
             raise
 
-    def assert_equal(self, expect_result, actual_results):
+    def assert_equal(self, expect_result, actual_result):
         """
         斷言預期結果與實際結果是否相等，如斷言發生錯誤進行截圖。
         """
         try:
-            assert expect_result == actual_results
-            self.logger.info(f"🟢 PASSED - 預期結果: {expect_result}, 實際結果: {actual_results}")
+            assert expect_result == actual_result
+            self.logger.info(f"🟢 PASSED - 預期結果: {expect_result}, 實際結果: {actual_result}")
             if global_adapter.ALL_ASSERT_SCREENSHOTS:
                 self.allure_factory.take_screenshot(self.driver, "assert_passed")
-        except AssertionError as ae:
-            error_msg = f"🔴 FAILED - 預期结果: {expect_result}, 實際結果: {actual_results}, 錯誤訊息: {ae}"
+        except AssertionError as e:
+            error_msg = f"🔴 FAILED - 預期结果: {expect_result}, 實際結果: {actual_result}, 錯誤訊息: {e}"
             self.logger.error(error_msg)
             self.allure_factory.take_screenshot(self.driver, "assert_failed")
             raise Exception(error_msg)
         except Exception as e:
-            error_msg = f"🔴 FAILED - 斷言過程發生非預期錯誤:{e}, 預期结果: {expect_result}, 實際結果: {actual_results}"
+            error_msg = f"🔴 FAILED - 斷言過程發生非預期錯誤:{e}, 預期结果: {expect_result}, 實際結果: {actual_result}"
             self.logger.error(error_msg)
             self.allure_factory.take_screenshot(self.driver, "assert_failed")
             raise Exception(error_msg)
 
-    def assert_include(self, expect_result, actual_results):
+    def assert_include(self, expect_result, actual_result):
         """
         斷言預期結果是否包含在實際結果中，如斷言發生錯誤進行截圖。
         """
         try:
-            assert expect_result in actual_results
-            self.logger.info(f"🟢 PASSED - 預期結果: {expect_result}, 實際結果: {actual_results}")
+            assert expect_result in actual_result
+            self.logger.info(f"🟢 PASSED - 預期結果: {expect_result}, 實際結果: {actual_result}")
             if global_adapter.ALL_ASSERT_SCREENSHOTS:
                 self.allure_factory.take_screenshot(self.driver, "assert_passed")
-        except AssertionError as ae:
-            error_msg = f"🔴 FAILED - 預期结果: {expect_result}, 實際結果: {actual_results}, 錯誤訊息: {ae}"
+        except AssertionError as e:
+            error_msg = f"🔴 FAILED - 預期结果: {expect_result}, 實際結果: {actual_result}, 錯誤訊息: {e}"
             self.logger.error(error_msg)
             self.allure_factory.take_screenshot(self.driver, "assert_failed")
             raise Exception(error_msg)
         except Exception as e:
-            error_msg = f"🔴 FAILED - 斷言過程發生非預期錯誤:{e}, 預期结果: {expect_result}, 實際結果: {actual_results}"
+            error_msg = f"🔴 FAILED - 斷言過程發生非預期錯誤:{e}, 預期结果: {expect_result}, 實際結果: {actual_result}"
             self.logger.error(error_msg)
             self.allure_factory.take_screenshot(self.driver, "assert_failed")
             raise Exception(error_msg)

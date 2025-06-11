@@ -20,7 +20,7 @@ class TestJPH:
         # When
         get_id101 = jph_api.get_id().json()
         # Then
-        assert get_id101[0]["postId"] == 2
+        jph_api.assert_equal(get_id101[0]["postId"], 2)
 
     @allure.feature("Post 測試")
     def test_posts(self):
@@ -37,6 +37,6 @@ class TestJPH:
         # When
         posts_json = jph_api.posts(json=body, headers=headers)
         # Then
-        assert posts_json.json()["title"] == body["title"]
-        assert posts_json.json()["body"] == body["body"]
-        assert posts_json.json()["userId"] == body["userId"]
+        jph_api.assert_equal(posts_json.json()["title"], body["title"])
+        jph_api.assert_equal(posts_json.json()["body"], body["body"])
+        jph_api.assert_equal(posts_json.json()["userId"], body["userId"])

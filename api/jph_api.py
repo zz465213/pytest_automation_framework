@@ -1,8 +1,8 @@
 import logging
-from api.base_api import BaseAPI
+from utils.api_factory import APIFactory
 
 
-class JphAPI(BaseAPI):
+class JphAPI(APIFactory):
 
     def __init__(self, url, id_no=1):
         super().__init__(url)
