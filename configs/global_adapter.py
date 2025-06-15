@@ -24,11 +24,12 @@ DEV_SHM_USE = "--disable-dev-shm-usage"
 GPU_USE = "--disable-gpu"
 WINDOW_SIZE = "--window-size=1920,1080"
 HEADLESS = False  # 是否啟用無頭模式
-CHROME_STRATEGY = "eager"  # Chrome特定頁面加載策略(normal, eager, none)
+CHROME_LOAD_STRATEGY = "eager"  # Chrome特定頁面加載策略(normal, eager, none)
+UNDETECTED_CHROME = False  # 是否啟用防止偵測模式(使用chrome才有用)
 
 # timeout設定
-IMPLICIT_WAIT = 5
-TIMEOUT_PAGE_LOAD = 10
+IMPLICIT_WAIT = 10
+TIMEOUT_PAGE_LOAD = 30
 
 # 截圖設定
 ELEMENT_ACTION_SCREENSHOTS = False  # 是否元素執行完動作就截圖，如 False 則只有執行失敗才截圖

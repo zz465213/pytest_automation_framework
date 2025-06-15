@@ -2,7 +2,7 @@ import allure
 import os
 import pytest
 from configs.common_paths import TEST_DATA_DIR
-from pages.yahoo_portal_page import YahooPortalPage
+from pages.yahoo.yahoo_portal_page import YahooPortalPage
 from utils.file_tool import read_data_from_csv
 
 
@@ -53,6 +53,7 @@ class TestYahooPortal:
 
     @allure.story("正向測試，搜尋飯店且驗證飯店所在縣市是否包含在標題內")
     @allure.severity(allure.severity_level.NORMAL)
+    @pytest.mark.success
     def test_valid_search(self, get_driver, get_url):
         # Arrange
         login_page = YahooPortalPage(driver=get_driver, url=get_url)

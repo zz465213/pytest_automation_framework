@@ -3,6 +3,10 @@ local:
     url: "https://tw.yahoo.com"
   jph:
     url: "https://jsonplaceholder.typicode.com"
+  kktix:
+    url: "https://kktix.com/"
+    username: ${USERNAME}
+    password: ${PASSWORD}
 
 ut:
   yahoo:
