@@ -49,7 +49,7 @@ class AllureFactory:
         Returns:
             str: 最終報告文件路徑，失敗返回舊路徑
         """
-        report_filename = f"report_{global_adapter.NOWTIME}.html"
+        report_filename = f"report_{global_adapter.START_TIME}.html"
         old_path = f"{REPORT_DIR}/complete.html"
         new_path = f"{REPORT_DIR}/{report_filename}"
 
