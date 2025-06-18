@@ -42,6 +42,18 @@ class APIFactory:
     def delete(self, endpoint, **kwargs):
         return self._send_request("DELETE", endpoint, **kwargs)
 
+    def get_json(self, endpoint, params=None, **kwargs):
+        return self.get(endpoint, params=params, **kwargs).json()
+
+    def get_text(self, endpoint, params=None, **kwargs):
+        return self.get(endpoint, params=params, **kwargs).text
+
+    def get_content(self, endpoint, params=None, **kwargs):
+        return self.get(endpoint, params=params, **kwargs).content
+
+    def get_raw(self, endpoint, params=None, **kwargs):
+        return self.get(endpoint, params=params, **kwargs).raw
+
     def assert_equal(self, expect_result, actual_result):
         """
         斷言預期結果與實際結果是否相等。
@@ -53,7 +65,7 @@ class APIFactory:
             error_msg = f"🔴 FAILED - 預期结果: {expect_result}, 實際結果: {actual_result}, 錯誤訊息: {e}"
             raise Exception(error_msg)
         except Exception as e:
-            error_msg = f"🔴 FAILED - 斷言過程發生非預期錯誤:{e}, 預期结果: {expect_result}, 實際結果: {actual_results}"
+            error_msg = f"🔴 FAILED - 斷言過程發生非預期錯誤:{e}, 預期结果: {expect_result}, 實際結果: {actual_result}"
             raise Exception(error_msg)
 
     def assert_include(self, expect_result, actual_result):

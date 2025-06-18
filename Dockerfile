@@ -3,8 +3,8 @@
 
 FROM python:3.11-slim AS build
 COPY requirements.txt /opt/requirements.txt
-COPY allure_requirements/openjdk-11+28_linux-x64_bin.tar.gz /opt/
-COPY allure_requirements/allure-2.24.0.tgz /opt/
+COPY framework_requirements/openjdk-11+28_linux-x64_bin.tar.gz /opt/
+COPY framework_requirements/allure-2.24.0.tgz /opt/
 RUN apt-get update && apt-get install -y libgl1-mesa-glx libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 RUN tar -xvzf /opt/openjdk-11+28_linux-x64_bin.tar.gz -C /usr/local

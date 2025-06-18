@@ -9,12 +9,10 @@ class YahooPortalPage(BasePage):
     SEARCH_BTN = (By.ID, "header-desktop-search-button")
     SEARCH_RESULT_TITLE = (By.XPATH, "//h3/span[@class=' fz-20 lh-26 d-b tc']")
 
-    def __init__(self, driver, url):
-        super().__init__(driver, url)
+    def __init__(self, driver):
+        super().__init__(driver)
         self.logger = logging.getLogger(__name__)
         self.allure_factory = AllureFactory()
-        self.driver = driver
-        self.url = url
 
     def search_result(self, text):
         """執行登入操作"""

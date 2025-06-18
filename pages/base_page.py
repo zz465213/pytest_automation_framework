@@ -8,19 +8,18 @@ import time
 
 
 class BasePage:
-    def __init__(self, driver, url):
+    def __init__(self, driver):
         self.logger = logging.getLogger(__name__)
         self.driver = driver
-        self.url = url
         self.allure_factory = AllureFactory()
 
-    def open_page(self):
+    def open_page(self, url):
         """輸入 URL 開啟頁面"""
         try:
-            self.driver.get(self.url)
-            self.logger.info(f"🟢 進入頁面: {self.url} 成功")
+            self.driver.get(url)
+            self.logger.info(f"🟢 進入頁面: {url} 成功")
         except Exception as e:
-            self.logger.error(f"🔴 找不到頁面URL: {self.url}, 錯誤訊息: {e}")
+            self.logger.error(f"🔴 找不到頁面URL: {url}, 錯誤訊息: {e}")
             raise
 
     @staticmethod
@@ -37,7 +36,10 @@ class BasePage:
             element = WebDriverWait(self.driver, global_adapter.IMPLICIT_WAIT).until(
                 EC.visibility_of_element_located(locator)
             )
-            self._highlight_element(element)
+
+            if global_adapter.HIGH_LIGHT:
+                self._highlight_element(element)
+
             return element
         except Exception as e:
             self.logger.error(f"🔴 找不到元素: {locator_str}, 錯誤訊息: {e}")
@@ -199,7 +201,6 @@ class BasePage:
 
             # Python 控制閃爍順序
             colors = [
-                '#ede574', '#f9d423', '#fc913a', 'ff4e50',
                 '#ede574', '#f9d423', '#fc913a', 'ff4e50'
             ]
 

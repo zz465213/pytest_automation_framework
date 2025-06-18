@@ -1,23 +1,21 @@
 # 自動化測試框架
 
-## 1. 框架設計理念
+## 1. 如何執行
+- Web功能性測試: `python run.py --test_type web --browser ** --env ** -m **`
+- App功能性測試(測browser): `python run.py --test_type app --browser ** --env ** -m **`
+- App功能性測試(調整app package/activity測應用程式): `python run.py --test_type app --env ** -m **`
+- Api功能性測試: `python run.py --test_type api --env ** -m **`
+
+## 2. 框架設計理念
 - 模組化 (Modularity): 將不同功能的程式碼組織在獨立的模組中，方便管理和維護。
 - 可重用性 (Reusability): 透過 fixtures page objects 等方式提高程式碼的重用性。
 - 可配置性 (Configurability): 將環境配置、測試數據等外部化，方便在不同環境下執行測試。
 - 易讀性 (Readability): 採用清晰的命名規範和程式碼結構，使測試案例易於理解。
 - 可擴展性 (Extensibility): 框架設計應考慮未來可能新增的測試類型或工具。
 
-## 2. 框架目錄結構
+## 3. 框架目錄結構
 ```
 pytest_automation_framework/
-│
-├── allure_requirements/     # 建立 docker image 必要的 allure 壓縮檔目錄
-│   ├── allure-2.24.0.tgz
-│   └── openjdk-11+28_linux-x64_bin.tar.gz    
-│
-├── api/                     # api物件
-│   ├── __init__.py
-│   └── ***_api.py           # api實體
 │
 ├── configs/                 # 設置文件目錄
 │   ├── __init__.py
@@ -27,10 +25,10 @@ pytest_automation_framework/
 │
 ├── logs/                    # 日誌目錄
 │
-├── pages/                   # 頁面物件
-│   ├── __init__.py
-│   ├── base_page.py         # 基礎頁面類
-│   └── ***_page.py          # 頁面實體
+├── pages/                   # 物件目錄
+│   ├── __init__.py              
+│   ├── app_base_page.py     # app頁面物件    
+│   └── base_page.py         # web頁面物件           
 │
 ├── reports/                 # 測試報告目錄
 │
@@ -59,7 +57,7 @@ pytest_automation_framework/
 └── run.py                   # 執行路口
 ```
 
-## 3. Allure 環境設置:
+## 4. Allure 環境設置:
 - 安裝[JDK](<https://www.oracle.com/java/technologies/downloads/>):
   1. 到官網安裝 JDK
   2. JDK 加 $Java_Home 環境變數當中
@@ -71,7 +69,7 @@ pytest_automation_framework/
   3. 將 bin 檔加到環境變數當中
   4. cmd 輸入 `allure --version` 看到版本號表示安裝成功
 
-## 4. Appium 環境設置:
+## 5. Appium 環境設置:
 - 安裝 JDK 同 `3. Allure 環境設置` 操作
 - 安裝 [Android Studio](<https://developer.android.com/studio?hl=zh-tw#get-android-studio/>)
   1. 到官網安裝 Android Studio 的 exe 檔
@@ -106,6 +104,6 @@ pytest_automation_framework/
   1. Appium 用來自動化 Android 裝置上的應用程式: cmd 輸入 `appium driver install uiautomator2`
   2. Appium 控制 Android 上的 Chrome 瀏覽器內容: cmd 輸入 `appium driver install chromium`
 
-## 5. 如何 Build Docker Image
+## 6. 如何 Build Docker Image
 - docker build -t {映像檔名稱}:{映像檔標記} .
 - docker run --rm -it -v /$(pwd):/test {映像檔名稱}:{映像檔標記} bash

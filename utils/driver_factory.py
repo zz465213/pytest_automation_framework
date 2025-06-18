@@ -88,7 +88,7 @@ class DriverFactory:
             "uc": uc.Chrome
         }
         if browser_type not in driver_map:
-            raise ValueError(f"不支援的瀏覽器類型: {browser_type}")
+            raise ValueError(f"🔴 不支援的瀏覽器類型: {browser_type}")
 
         if browser_type == "chrome" and global_adapter.UNDETECTED_CHROME:
             driver = driver_map["uc"]
@@ -97,7 +97,7 @@ class DriverFactory:
 
         return driver(service=service, options=options)
 
-    def get_driver(self, browser_type):
+    def get_web_driver(self, browser_type):
         """
         根據指定的瀏覽器類型創建WebDriver
 

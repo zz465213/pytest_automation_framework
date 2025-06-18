@@ -1,6 +1,9 @@
 import allure
 import json
 import logging
+import requests
+import selenium
+import importlib.metadata
 from configs import global_adapter
 from configs.common_paths import *
 from datetime import datetime
@@ -63,7 +66,7 @@ class AllureFactory:
     @staticmethod
     def get_selenium_environment_data(env, test_type, browser, url):
         """
-        產生測試環境資訊的字典。
+        產生 Web 測試環境資訊
 
         Args:
             env (str): 環境名稱
@@ -72,22 +75,66 @@ class AllureFactory:
             url (str): 測試 URL
 
         Returns:
-            dict: 包含測試環境資訊的字典
+            dict: Web測試環境資訊
+        """
+        env_data = {
+            "TestType": test_type.capitalize(),
+            "Environment": env.capitalize(),
+            "Platform": global_adapter.COMPUTER_PLATFORM,
+            "PythonVersion": global_adapter.PYTHON_VERSION,
+            "Browser": browser.capitalize(),
+            "Url": url,
+            "SeleniumVersion": selenium.__version__
+        }
+        return env_data
+
+    @staticmethod
+    def get_request_environment_data(env, test_type):
+        """
+        產生 Api 測試環境資訊
+
+        Args:
+            env (str): 環境名稱
+            test_type(str): 測試類型
+
+        Returns:
+            dict: Api測試環境資訊
         """
         env_data = {
             "TestType": test_type.upper(),
             "Environment": env.capitalize(),
-            "Platform": global_adapter.PLATFORM,
+            "Platform": global_adapter.COMPUTER_PLATFORM,
             "PythonVersion": global_adapter.PYTHON_VERSION,
+            "RequestsVersion": requests.__version__
+        }
+        return env_data
+
+    @staticmethod
+    def get_appium_environment_data(env, test_type, browser, url):
+        """
+        產生 App 測試環境資訊
+
+        Args:
+            env (str): 環境名稱
+            test_type(str): 測試類型
+            browser (str): 瀏覽器名稱
+            url (str): 測試 URL
+
+        Returns:
+            dict: App測試環境資訊
+        """
+        env_data = {
+            "TestType": test_type.upper(),
+            "Environment": env.capitalize(),
+            "Platform": global_adapter.COMPUTER_PLATFORM,
+            "PythonVersion": global_adapter.PYTHON_VERSION,
+            "AppiumVersion": importlib.metadata.version("Appium-Python-Client"),
+            "AppVersion": f"{global_adapter.APP_PLATFORM} {global_adapter.APP_PLATFORM_VERSION}"
         }
 
-        if test_type in ["web", "app"]:
+        if browser:
             env_data["Browser"] = browser
             env_data["URL"] = url
-        if test_type == "web":
-            env_data["SeleniumVersion"] = global_adapter.SELENIUM_VERSION
-        elif test_type == "api":
-            env_data["RequestsVersion"] = global_adapter.REQUESTS_VERSION
         return env_data
 
     def setup_environment_info(self, env, test_type, browser, url):
@@ -100,8 +147,15 @@ class AllureFactory:
             browser (str): 瀏覽器名稱
             url (str): 測試 URL
         """
-        # 從獨立函數獲取環境數據
-        env_data = self.get_selenium_environment_data(env, test_type, browser, url)
+        # 獲取測試環境資訊
+        if test_type.lower() == "web":
+            env_data = self.get_selenium_environment_data(env, test_type, browser, url)
+        elif test_type.lower() == "app":
+            env_data = self.get_appium_environment_data(env, test_type, browser, url)
+        elif test_type.lower() == "api":
+            env_data = self.get_request_environment_data(env, test_type)
+        else:
+            raise ValueError(f"🔴 輸入錯誤的 TestType = {test_type}")
 
         # 確保 Allure 結果目錄存在
         os.makedirs(ALLURE_RESULTS_DIR, exist_ok=True)

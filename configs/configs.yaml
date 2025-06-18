@@ -3,6 +3,8 @@ local:
     url: "https://tw.yahoo.com"
   jph:
     url: "https://jsonplaceholder.typicode.com"
+  heroku_app:
+    url: "https://the-internet.herokuapp.com/login"
   kktix:
     url: "https://kktix.com/"
     username: ${USERNAME}
@@ -13,15 +15,21 @@ ut:
     url: "https://us.yahoo.com"
   jph:
     url: "https://jsonplaceholder.typicode.com"
+  heroku_app:
+    url: "https://the-internet.herokuapp.com/login"
 
 sit:
   yahoo:
     url: "https://hk.yahoo.com"
   jph:
     url: "https://jsonplaceholder.typicode.com"
+  heroku_app:
+    url: "https://the-internet.herokuapp.com/login"
 
 uat:
   yahoo:
     url: "https://uk.yahoo.com"
   jph:
     url: "https://jsonplaceholder.typicode.com"
+  heroku_app:
+    url: "https://the-internet.herokuapp.com/login"
