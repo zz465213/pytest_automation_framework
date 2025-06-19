@@ -1,6 +1,8 @@
 import requests
 import logging
 
+import requests.cookies
+
 
 class APIFactory:
     def __init__(self, url):
@@ -53,6 +55,12 @@ class APIFactory:
 
     def get_raw(self, endpoint, params=None, **kwargs):
         return self.get(endpoint, params=params, **kwargs).raw
+
+    def post_text(self, endpoint, **kwargs):
+        return self.post(endpoint, **kwargs).text
+
+    def post_json(self, endpoint, **kwargs):
+        return self.post(endpoint, **kwargs).json()
 
     def assert_equal(self, expect_result, actual_result):
         """

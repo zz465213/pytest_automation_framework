@@ -35,7 +35,7 @@ def rename_file(old_path, new_path):
 def read_yaml(file_path):
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
-            configs = yaml.load(f, Loader=yaml.FullLoader)
+            configs = yaml.safe_load(f)
             return configs
     except FileNotFoundError as e:
         logging.error(f"🔴 找不到文件資料: {file_path}，失敗訊息: {e}")

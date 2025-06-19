@@ -1,35 +1,22 @@
 local:
-  yahoo:
-    url: "https://tw.yahoo.com"
-  jph:
-    url: "https://jsonplaceholder.typicode.com"
   heroku_app:
     url: "https://the-internet.herokuapp.com/login"
-  kktix:
-    url: "https://kktix.com/"
-    username: ${USERNAME}
-    password: ${PASSWORD}
-
+    username: "tomsmith"
+    password: "HEROKU_APP_PASSWORD"  # SuperSecretPassword!
 ut:
-  yahoo:
-    url: "https://us.yahoo.com"
-  jph:
-    url: "https://jsonplaceholder.typicode.com"
   heroku_app:
     url: "https://the-internet.herokuapp.com/login"
+    username: "tomsmith"
+    password: "HEROKU_APP_PASSWORD"  # SuperSecretPassword!
 
 sit:
-  yahoo:
-    url: "https://hk.yahoo.com"
-  jph:
-    url: "https://jsonplaceholder.typicode.com"
   heroku_app:
     url: "https://the-internet.herokuapp.com/login"
+    username: "tomsmith"
+    password: "HEROKU_APP_PASSWORD"  # SuperSecretPassword!
 
 uat:
-  yahoo:
-    url: "https://uk.yahoo.com"
-  jph:
-    url: "https://jsonplaceholder.typicode.com"
   heroku_app:
     url: "https://the-internet.herokuapp.com/login"
+    username: "tomsmith"
+    password: "HEROKU_APP_PASSWORD"  # SuperSecretPassword!
