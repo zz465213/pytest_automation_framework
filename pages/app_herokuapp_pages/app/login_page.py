@@ -25,6 +25,11 @@ class LoginPage(AppBasePage):
         self.driver = driver
 
     def enter_heroku_app(self, url):
+        """
+        1. 開啟 Chrome APP
+        2. 關閉[離開帳戶]按鈕
+        3. 進入HerokuApp頁面
+        """
         self.allure_factory.add_test_step(f"進入HerokuApp主頁")
         self.click_element(self.WITHOUT_ACCT)
         self.click_element(self.GOT_IT_BTN)
@@ -32,7 +37,11 @@ class LoginPage(AppBasePage):
         self.click_element(self.HEROKU_SELECTOR)
 
     def user_login(self, username, password):
-        self.allure_factory.add_test_step(f"輸入帳號: {username}, 密碼:{password}")
+        """
+        1. 輸入帳號密碼進入登入頁
+        2. 取得登入首頁標題文字
+        """
+        self.allure_factory.add_test_step(f"輸入帳號: {username}, 密碼:***")
         self.click_element(self.ENTER_WEB)
         self.switch_to_webview_context(5, "WEBVIEW_chrome")
         self.input_text(self.USERNAME_INPUT, username)

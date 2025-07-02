@@ -171,7 +171,7 @@ class TestApiLogin:
                              [("!"), ("@"), ("#"), ("$"), ("%"), ("^"), ("&"), ("*"), ("("), (")"), ("_"), ("+"), ("-"),
                               ("="), ("["), ("]"), ("\\"), ("{"), ("}"), ("|"), (";"), (":"), ("'"), ("`"), (","),
                               ("."), ("/"), ("<"), (">"), ("?"), ("~"), ("\"")])
-    @allure.feature("反向測試: 錯誤符號帳號")
+    @allure.feature("反向測試: 錯誤符號密碼")
     @allure.severity(allure.severity_level.NORMAL)
     @pytest.mark.p3
     def test_invalid_symbol_password_login(self, get_json, symbol):

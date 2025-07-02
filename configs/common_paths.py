@@ -20,7 +20,6 @@ CONFIGS_DIR = os.path.join(ROOT_DIR, "configs")
 CONFIGS_FILE = os.path.join(CONFIGS_DIR, "configs.yaml")
 
 # ==== 目錄設定 ====
-os.makedirs(ROOT_DIR, exist_ok=True)
 os.makedirs(LOG_DIR, exist_ok=True)
 os.makedirs(REPORT_DIR, exist_ok=True)
 os.makedirs(TESTCASES_DIR, exist_ok=True)

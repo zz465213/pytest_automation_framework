@@ -16,9 +16,8 @@ ENV PATH=$JAVA_HOME/bin:/opt/allure/bin:$PATH
 RUN pip config --user set global.progress_bar off && \
 pip install -r /opt/requirements.txt
 WORKDIR /test
+COPY . .
 
-# COPY . .
-# ENTRYPOINT [ "python", "run.py", "--browser", "chrome", "--env", "local", "-m", "yahoo]
+# ENTRYPOINT [ python run.py --test_type="api" --env="local" -m="api and p1" ]
 # docker build -t leon:test .
 # docker run --rm -it -v /$(pwd):/test qa bash
-# -m ut_api_sk --toke

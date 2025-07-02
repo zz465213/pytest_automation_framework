@@ -1,10 +1,8 @@
 import pytest
 import sys
-import os
 from utils.allure_factory import AllureFactory
 
-# TODO: 參考 SeleiumBase 做一個定位
-# TODO: Jenkins
+# TODO: CICD
 if __name__ == '__main__':
     # ---- 執行 Pytest ----
     arg = sys.argv[1:]

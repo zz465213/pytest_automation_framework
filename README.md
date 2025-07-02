@@ -22,31 +22,24 @@ pytest_automation_framework/
 │   ├── common_paths.py      # 共用路徑
 │   ├── config.yaml          # 基本設置(URL、使用者資訊等等)
 │   └── global_adapter.py    # 全域變數設定
-│
 ├── logs/                    # 日誌目錄
-│
 ├── pages/                   # 物件目錄
 │   ├── __init__.py              
 │   ├── app_base_page.py     # app頁面物件    
 │   └── base_page.py         # web頁面物件           
-│
 ├── reports/                 # 測試報告目錄
-│
 ├── resources/               # 資料文件目錄
 │   ├── payloads/            # api payloads 資料
 │   └── test_data/           # 測試資料
-│
 ├── testcases/               # 測試案例目錄
 │   ├── __init__.py
 │   └── test_***.py          # 測試案例
-│
-├── utils/                   # 工具類目錄
+├── utils/                   # 共用類目錄
 │   ├── __init__.py
 │   ├── allure_factory.py    # Allure 工廠類
 │   ├── api_factory.py       # API 工廠類
 │   ├── driver_factory.py    # WebDriver 工廠類
 │   └── file_tool.py         # 文件操作小工具
-│
 ├── .dockerignore            # Docker 映像建構時排除檔案
 ├── .gitignore               # Git 版本控制時排除檔案
 ├── conftest.py              # Pytest設置和常數設定
