@@ -1,0 +1,9 @@
+{
+  "header": {
+    "Content-Type": "application/x-www-form-urlencoded"
+  },
+  "body": {
+    "username": "tomsmith",
+    "password": "SuperSecretPassword%21"
+  }
+}

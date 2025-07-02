@@ -1,3 +1,5 @@
+import logging
+import undetected_chromedriver as uc
 from configs import global_adapter
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
@@ -6,7 +8,6 @@ from selenium.webdriver.edge.service import Service as EdgeService
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
-import logging
 
 
 class DriverFactory:
@@ -44,7 +45,7 @@ class DriverFactory:
 
         # Chrome特定配置
         if browser_type == "chrome":
-            options.page_load_strategy = global_adapter.CHROME_STRATEGY
+            options.page_load_strategy = global_adapter.CHROME_LOAD_STRATEGY
 
         return options
 
@@ -83,12 +84,20 @@ class DriverFactory:
         driver_map = {
             "chrome": webdriver.Chrome,
             "firefox": webdriver.Firefox,
-            "edge": webdriver.Edge
+            "edge": webdriver.Edge,
+            "uc": uc.Chrome
         }
+        if browser_type not in driver_map:
+            raise ValueError(f"🔴 不支援的瀏覽器類型: {browser_type}")
 
-        return driver_map[browser_type](service=service, options=options)
+        if browser_type == "chrome" and global_adapter.UNDETECTED_CHROME:
+            driver = driver_map["uc"]
+        else:
+            driver = driver_map[browser_type]
 
-    def get_driver(self, browser_type):
+        return driver(service=service, options=options)
+
+    def get_web_driver(self, browser_type):
         """
         根據指定的瀏覽器類型創建WebDriver
 

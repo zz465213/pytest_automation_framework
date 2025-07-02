@@ -8,19 +8,18 @@ import time
 
 
 class BasePage:
-    def __init__(self, driver, url):
+    def __init__(self, driver):
         self.logger = logging.getLogger(__name__)
         self.driver = driver
-        self.url = url
         self.allure_factory = AllureFactory()
 
-    def open_page(self):
+    def open_page(self, url):
         """輸入 URL 開啟頁面"""
         try:
-            self.driver.get(self.url)
-            self.logger.info(f"🟢 進入頁面: {self.url} 成功")
+            self.driver.get(url)
+            self.logger.info(f"🟢 進入頁面: {url} 成功")
         except Exception as e:
-            self.logger.error(f"🔴 找不到頁面URL: {self.url}, 錯誤訊息: {e}")
+            self.logger.error(f"🔴 找不到頁面URL: {url}, 錯誤訊息: {e}")
             raise
 
     @staticmethod
@@ -37,7 +36,10 @@ class BasePage:
             element = WebDriverWait(self.driver, global_adapter.IMPLICIT_WAIT).until(
                 EC.visibility_of_element_located(locator)
             )
-            self._highlight_element(element)
+
+            if global_adapter.HIGH_LIGHT:
+                self._highlight_element(element)
+
             return element
         except Exception as e:
             self.logger.error(f"🔴 找不到元素: {locator_str}, 錯誤訊息: {e}")
@@ -144,42 +146,42 @@ class BasePage:
             self.allure_factory.take_screenshot(self.driver, "move_failed")
             raise
 
-    def assert_equal(self, expect_result, actual_results):
+    def assert_equal(self, expect_result, actual_result):
         """
         斷言預期結果與實際結果是否相等，如斷言發生錯誤進行截圖。
         """
         try:
-            assert expect_result == actual_results
-            self.logger.info(f"🟢 PASSED - 預期結果: {expect_result}, 實際結果: {actual_results}")
+            assert expect_result == actual_result
+            self.logger.info(f"🟢 PASSED - 預期結果: {expect_result}, 實際結果: {actual_result}")
             if global_adapter.ALL_ASSERT_SCREENSHOTS:
                 self.allure_factory.take_screenshot(self.driver, "assert_passed")
-        except AssertionError as ae:
-            error_msg = f"🔴 FAILED - 預期结果: {expect_result}, 實際結果: {actual_results}, 錯誤訊息: {ae}"
+        except AssertionError as e:
+            error_msg = f"🔴 FAILED - 預期结果: {expect_result}, 實際結果: {actual_result}, 錯誤訊息: {e}"
             self.logger.error(error_msg)
             self.allure_factory.take_screenshot(self.driver, "assert_failed")
             raise Exception(error_msg)
         except Exception as e:
-            error_msg = f"🔴 FAILED - 斷言過程發生非預期錯誤:{e}, 預期结果: {expect_result}, 實際結果: {actual_results}"
+            error_msg = f"🔴 FAILED - 斷言過程發生非預期錯誤:{e}, 預期结果: {expect_result}, 實際結果: {actual_result}"
             self.logger.error(error_msg)
             self.allure_factory.take_screenshot(self.driver, "assert_failed")
             raise Exception(error_msg)
 
-    def assert_include(self, expect_result, actual_results):
+    def assert_include(self, expect_result, actual_result):
         """
         斷言預期結果是否包含在實際結果中，如斷言發生錯誤進行截圖。
         """
         try:
-            assert expect_result in actual_results
-            self.logger.info(f"🟢 PASSED - 預期結果: {expect_result}, 實際結果: {actual_results}")
+            assert expect_result in actual_result
+            self.logger.info(f"🟢 PASSED - 預期結果: {expect_result}, 實際結果: {actual_result}")
             if global_adapter.ALL_ASSERT_SCREENSHOTS:
                 self.allure_factory.take_screenshot(self.driver, "assert_passed")
-        except AssertionError as ae:
-            error_msg = f"🔴 FAILED - 預期结果: {expect_result}, 實際結果: {actual_results}, 錯誤訊息: {ae}"
+        except AssertionError as e:
+            error_msg = f"🔴 FAILED - 預期结果: {expect_result}, 實際結果: {actual_result}, 錯誤訊息: {e}"
             self.logger.error(error_msg)
             self.allure_factory.take_screenshot(self.driver, "assert_failed")
             raise Exception(error_msg)
         except Exception as e:
-            error_msg = f"🔴 FAILED - 斷言過程發生非預期錯誤:{e}, 預期结果: {expect_result}, 實際結果: {actual_results}"
+            error_msg = f"🔴 FAILED - 斷言過程發生非預期錯誤:{e}, 預期结果: {expect_result}, 實際結果: {actual_result}"
             self.logger.error(error_msg)
             self.allure_factory.take_screenshot(self.driver, "assert_failed")
             raise Exception(error_msg)
@@ -199,7 +201,6 @@ class BasePage:
 
             # Python 控制閃爍順序
             colors = [
-                '#ede574', '#f9d423', '#fc913a', 'ff4e50',
                 '#ede574', '#f9d423', '#fc913a', 'ff4e50'
             ]
 

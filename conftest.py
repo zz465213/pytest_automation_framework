@@ -5,6 +5,7 @@ from configs import global_adapter
 from configs.common_paths import LOG_DIR
 from datetime import datetime
 from utils.allure_factory import AllureFactory
+from utils.appium_factory import AppiumFactory
 from utils.driver_factory import DriverFactory
 
 
@@ -91,28 +92,44 @@ def get_browser(request):
 @pytest.fixture(scope="session")
 def get_url(request):
     """
-    提供 global_adapter.py 中預設的 URL。
+    提供 global_adapter.py 中預設的 URL (從 Conftest 帶入使用)
     """
     return global_adapter.URL
 
 
 @pytest.fixture(scope="function")
-def get_driver(request, get_browser):
+def get_web_driver(request, get_browser):
     """初始化WebDriver"""
     driver_factory = DriverFactory()
-    driver = driver_factory.get_driver(get_browser)
+    driver = driver_factory.get_web_driver(get_browser)
+
     # driver 設定
     driver.maximize_window()
     driver.set_page_load_timeout(global_adapter.TIMEOUT_PAGE_LOAD)
     driver.implicitly_wait(global_adapter.IMPLICIT_WAIT)
 
-    # 使用 AllureFactory 設定測試標題
     AllureFactory.set_test_title(request.node.name)
 
-    # 提供driver給測試函數
     yield driver
 
-    # 測試結束後關閉瀏覽器
+    driver.quit()
+
+
+@pytest.fixture(scope="function")
+def get_app_driver(request, get_browser):
+    """初始化AppDriver"""
+    appium_factory = AppiumFactory()
+
+    # 選擇 Appium 測試裝置(uuid未填則用虛擬機)
+    app_device = global_adapter.REMOTE_URL
+    if global_adapter.UUID:
+        app_device = global_adapter.UUID
+    driver = appium_factory.get_app_driver(app_device, global_adapter.APP_PLATFORM)
+
+    AllureFactory.set_test_title(request.node.name)
+
+    yield driver
+
     driver.quit()
 
 
