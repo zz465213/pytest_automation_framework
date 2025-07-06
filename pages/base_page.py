@@ -33,7 +33,7 @@ class BasePage:
         """等到可見開始查找單一元素"""
         locator_str = self._format_locator(locator)
         try:
-            element = WebDriverWait(self.driver, global_adapter.IMPLICIT_WAIT).until(
+            element = WebDriverWait(self.driver, global_adapter.WEB_DRIVER_WAIT_TIME).until(
                 EC.visibility_of_element_located(locator)
             )
 
@@ -50,7 +50,7 @@ class BasePage:
         """等到可見開始查找多個元素"""
         locator_str = self._format_locator(locator)
         try:
-            elements = WebDriverWait(self.driver, global_adapter.IMPLICIT_WAIT).until(
+            elements = WebDriverWait(self.driver, global_adapter.WEB_DRIVER_WAIT_TIME).until(
                 EC.visibility_of_all_elements_located(locator)
             )
             return elements
@@ -121,7 +121,7 @@ class BasePage:
         """檢查元素是否存在"""
         locator_str = self._format_locator(locator)
         try:
-            WebDriverWait(self.driver, global_adapter.IMPLICIT_WAIT).until(
+            WebDriverWait(self.driver, global_adapter.WEB_DRIVER_WAIT_TIME).until(
                 EC.presence_of_element_located(locator)
             )
             self.logger.info(f"🟢 檢查元素: {locator_str} 存在")

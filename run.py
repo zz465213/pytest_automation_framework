@@ -9,4 +9,4 @@ if __name__ == '__main__':
     pytest.main(arg)
     # ---- 使用 AllureFactory 產生完整報告 ----
     allure_factory = AllureFactory()
-    final_report_path = allure_factory.generate_complete_report()
+    final_report_path = allure_factory.generate_report_flow()

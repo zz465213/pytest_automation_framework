@@ -34,7 +34,7 @@ class AppiumFactory:
         options.set_capability("language", global_adapter.LANGUAGE)
         options.set_capability("locale", global_adapter.LOCALE)
         options.set_capability("noReset", global_adapter.NO_RESET)
-        options.set_capability("newCommandTimeout", global_adapter.TIMEOUT_PAGE_LOAD * 1000)
+        options.set_capability("newCommandTimeout", global_adapter.PAGE_LOAD_WAIT_TIME * 1000)
         options.set_capability("uuid", global_adapter.UUID)
         options.set_capability("app", global_adapter.APP_FILE)
         options.set_capability("appPackage", global_adapter.APP_PACKAGE)
