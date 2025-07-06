@@ -4,23 +4,20 @@ import logging
 import requests
 import selenium
 import importlib.metadata
+import glob
 from configs import global_adapter
 from configs.common_paths import *
 from datetime import datetime
-from utils import file_tool
+from utils import file_tool, img_tool
 
 
 class AllureFactory:
     @staticmethod
-    def generate_allure_report():
+    def _generate_allure_report():
         """
         生成 Allure HTML 報告
-
-        Returns:
-            bool: 成功返回 True，失敗返回 False
         """
         allure_command = f"allure generate {ALLURE_RESULTS_DIR} -o {ALLURE_REPORT_DIR} --clean"
-
         exit_code = os.system(allure_command)
 
         if exit_code == 0:
@@ -30,12 +27,28 @@ class AllureFactory:
             raise Exception
 
     @staticmethod
-    def combine_allure_report():
+    def _compress_and_cleanup_images():
+        """
+        壓縮報告內 JPG/JPEG 圖片，並轉換為 WEBP 格式。
+        """
+        attachments_dir = f"{ALLURE_REPORT_DIR}/data/attachments"
+        try:
+            # 取得jpg截圖
+            jpg_files_path = glob.glob(os.path.join(attachments_dir, "*.jpg")) + \
+                             glob.glob(os.path.join(attachments_dir, "*.jpeg"))
+            # 舊檔案壓縮成webp並移除
+            for jpg_file_path in jpg_files_path:
+                img_tool.compress_image(input_path=jpg_file_path, output_path=jpg_file_path,
+                                        img_quality=30, img_format="WEBP")
+            logging.info(f"🟢 壓縮報告圖片成功")
+        except Exception as e:
+            logging.error(f"🔴 壓縮路徑:[{attachments_dir}] 的報告圖片失敗，失敗訊息: {e}")
+            raise Exception
+
+    @staticmethod
+    def _combine_allure_report():
         """
         合併 Allure 報告為單一 HTML 文件
-
-        Returns:
-            bool: 成功返回 True，失敗返回 False
         """
         combine_command = f"allure-combine {ALLURE_REPORT_DIR} --dest {REPORT_DIR}"
         combine_exit_code = os.system(combine_command)
@@ -45,7 +58,7 @@ class AllureFactory:
             logging.error("🔴 合併報告失敗")
             raise Exception
 
-    def generate_complete_report(self):
+    def generate_report_flow(self):
         """
         完整的報告生成流程
 
@@ -53,18 +66,20 @@ class AllureFactory:
             str: 最終報告文件路徑，失敗返回舊路徑
         """
         report_filename = f"report_{global_adapter.START_TIME}.html"
-        old_path = f"{REPORT_DIR}/complete.html"
-        new_path = f"{REPORT_DIR}/{report_filename}"
+        old_report_path = f"{REPORT_DIR}/complete.html"
+        new_report_path = f"{REPORT_DIR}/{report_filename}"
 
-        self.generate_allure_report()
-        self.combine_allure_report()
+        self._generate_allure_report()
+        self._compress_and_cleanup_images()
+        self._combine_allure_report()
+
         file_tool.cleanup_folder(ALLURE_RESULTS_DIR)
         file_tool.cleanup_folder(ALLURE_REPORT_DIR)
-        final_report_path = file_tool.rename_file(old_path, new_path)
+        final_report_path = file_tool.rename_file(old_report_path, new_report_path)
         return final_report_path
 
     @staticmethod
-    def get_selenium_environment_data(env, test_type, browser, url):
+    def _get_selenium_environment_data(env, test_type, browser, url):
         """
         產生 Web 測試環境資訊
 
@@ -83,13 +98,13 @@ class AllureFactory:
             "Platform": global_adapter.COMPUTER_PLATFORM,
             "PythonVersion": global_adapter.PYTHON_VERSION,
             "Browser": browser.capitalize(),
-            "Url": url,
-            "SeleniumVersion": selenium.__version__
+            "SeleniumVersion": selenium.__version__,
+            "URL": url
         }
         return env_data
 
     @staticmethod
-    def get_request_environment_data(env, test_type):
+    def _get_request_environment_data(env, test_type):
         """
         產生 Api 測試環境資訊
 
@@ -110,7 +125,7 @@ class AllureFactory:
         return env_data
 
     @staticmethod
-    def get_appium_environment_data(env, test_type, browser, url):
+    def _get_appium_environment_data(env, test_type, browser, url):
         """
         產生 App 測試環境資訊
 
@@ -149,11 +164,11 @@ class AllureFactory:
         """
         # 獲取測試環境資訊
         if test_type.lower() == "web":
-            env_data = self.get_selenium_environment_data(env, test_type, browser, url)
+            env_data = self._get_selenium_environment_data(env, test_type, browser, url)
         elif test_type.lower() == "app":
-            env_data = self.get_appium_environment_data(env, test_type, browser, url)
+            env_data = self._get_appium_environment_data(env, test_type, browser, url)
         elif test_type.lower() == "api":
-            env_data = self.get_request_environment_data(env, test_type)
+            env_data = self._get_request_environment_data(env, test_type)
         else:
             raise ValueError(f"🔴 輸入錯誤的 TestType = {test_type}")
 

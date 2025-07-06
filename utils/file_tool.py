@@ -7,7 +7,7 @@ import yaml
 
 
 def cleanup_folder(temp_dir):
-    """清理臨時文件和目錄"""
+    """清理臨時目錄"""
     try:
         shutil.rmtree(temp_dir)
         logging.info(f"🟢 已清理臨時目錄: {temp_dir}")
@@ -16,6 +16,19 @@ def cleanup_folder(temp_dir):
         raise
     except Exception as e:
         logging.error(f"🔴 清理目錄發生非預期錯誤，請檢查目錄: {temp_dir} ，失敗訊息: {e}")
+        raise
+
+
+def remove_file(file_path):
+    """清除該路徑的文件"""
+    try:
+        os.remove(file_path)
+        return
+    except FileNotFoundError as e:
+        logging.error(f"🔴 找不到文件資料: {file_path}，失敗訊息: {e}")
+        raise
+    except Exception as e:
+        logging.error(f"🔴 移除文件發生非預期錯誤，請檢查文件資料{file_path}，失敗訊息: {e}")
         raise
 
 
@@ -28,7 +41,7 @@ def rename_file(old_path, new_path):
         logging.error(f"🔴 找不到文件資料: {old_path}，失敗訊息: {e}")
         raise
     except Exception as e:
-        logging.error(f"🔴 文件重命名發生非預期錯誤，請檢查新路徑{new_path}及舊路徑{old_path}，失敗訊息: {e}")
+        logging.error(f"🔴 文件重命名發生非預期錯誤，請檢查新路徑{new_path}及原路徑{old_path}，失敗訊息: {e}")
         raise
 
 

@@ -105,8 +105,8 @@ def get_web_driver(request, get_browser):
 
     # driver 設定
     driver.maximize_window()
-    driver.set_page_load_timeout(global_adapter.TIMEOUT_PAGE_LOAD)
-    driver.implicitly_wait(global_adapter.IMPLICIT_WAIT)
+    driver.set_page_load_timeout(global_adapter.PAGE_LOAD_WAIT_TIME)
+    driver.implicitly_wait(global_adapter.IMPLICIT_WAIT_TIME)
 
     AllureFactory.set_test_title(request.node.name)
 
