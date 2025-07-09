@@ -17,6 +17,10 @@
 ```
 pytest_automation_framework/
 │
+├── .github/                 # github action CI/CD 使用
+│   └── workflows/
+│      └── *.yml             # CI/CD 設置文件 
+│
 ├── configs/                 # 設置文件目錄
 │   ├── __init__.py
 │   ├── common_paths.py      # 共用路徑
