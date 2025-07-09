@@ -3,6 +3,7 @@ name: Python CI/CD with Schedule
 on:
   schedule:
     - cron: '30 11 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
