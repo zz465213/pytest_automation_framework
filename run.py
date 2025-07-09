@@ -2,7 +2,6 @@ import pytest
 import sys
 from utils.allure_factory import AllureFactory
 
-# TODO: CICD
 if __name__ == '__main__':
     # ---- 執行 Pytest ----
     arg = sys.argv[1:]
