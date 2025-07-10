@@ -10,15 +10,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: 設定 Python 環境
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
-        cache: 'pip'
-    - name: 安裝專案依賴
-      run: |
-        pip install -r requirements.txt
-    - name: 執行 Pytest 測試
-      run: |
-        python run.py --test_type api --env local -m "api"
+      - uses: actions/checkout@v4
+      - name: 設定 Python 環境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - name: 安裝專案依賴
+        run: |
+          pip install -r requirements.txt
+      - name: 安裝 Allure Commandline  # 讓 allure 命令在環境中可用
+        uses: simple-elf/allure-report-action@v1.7
+        with:
+          allure_cmd: allure
+      - name: 執行 Pytest 測試
+        run: |
+          python run.py --test_type api --env local -m "api"
