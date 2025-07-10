@@ -20,10 +20,14 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: 安裝 Allure Commandline  # 讓 allure 命令在環境中可用
-        uses: allure-framework/allure-github-action@v2
-        with:
-          allure_version: 2.34.0
+      - name: 安裝 Allure  # 讓 allure 命令在環境中可用
+        run: |
+          sudo apt-get install -y openjdk-11-jre
+          ALLURE_VERSION=2.34.0
+          curl -LO https://github.com/allure-framework/allure2/releases/download/$ALLURE_VERSION/allure-$ALLURE_VERSION.tgz
+          tar -zxvf allure-$ALLURE_VERSION.tgz
+          sudo mv allure-$ALLURE_VERSION /opt/allure
+          sudo ln -sf /opt/allure/bin/allure /usr/bin/allure
       - name: 檢查 Allure 命令是否可用
         run: |
           echo "PATH: $PATH"
