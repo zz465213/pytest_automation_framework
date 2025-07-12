@@ -33,14 +33,16 @@ jobs:
         run: |
           python run.py --test_type api --env local -m "api"
 
-      - name: 上傳 Allure 報告為 Artifact
+      - name: Allure Report Artifact 下載
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: ./reports
           retention-days: 5 # 報告保留天數，可根據需求調整
 
-      - name: 顯示 Allure 報告下載連結
-        run: |
-          echo "Allure 報告已上傳為 Artifact。您可以在 Actions 頁面的「Artifacts」部分下載或查看。"
-          echo "直接連結通常無法直接提供，但您可以點擊當前工作流程運行頁面的 'Summary' 標籤，然後在右側找到 'Artifacts' 區域下載 'allure-report'。"
+      - name: 部署 Allure Report 到 GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./reports
+          publish_branch: gh-pages
