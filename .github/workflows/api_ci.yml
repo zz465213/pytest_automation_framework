@@ -16,6 +16,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: 設定 Chrome 環境
+        uses: browser-actions/setup-chrome@latest
+        with:
+          chrome-version: 'stable'
+      - name: 設定 Microsoft Edge 環境
+        uses: browser-actions/setup-msedge@latest
+        with:
+          msedge-version: 'stable'
+      - name: 設定 Firefox 環境
+        uses: browser-actions/setup-firefox@latest
+        with:
+          firefox-version: 'stable'
       - name: 設定 Python 環境
         uses: actions/setup-python@v5
         with:
@@ -24,7 +36,6 @@ jobs:
       - name: 安裝專案依賴
         run: |
           pip install -r requirements.txt
-
       - name: 安裝 Allure
         run: |
           sudo apt-get install -y openjdk-11-jre
@@ -53,3 +64,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./reports
           publish_branch: gh-pages  # report 放到 gh-pages 分支
+          keep_files: true
