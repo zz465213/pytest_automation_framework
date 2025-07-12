@@ -15,11 +15,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - name: 設定 Chrome 環境
-        uses: browser-actions/setup-chrome@latest
-        with:
-          chrome-version: 'stable'
+      - name: 檢查 repository
+        uses: actions/checkout@v4
       - name: 設定 Python 環境
         uses: actions/setup-python@v5
         with:
@@ -36,6 +33,18 @@ jobs:
           tar -zxvf allure-$ALLURE_VERSION.tgz
           sudo mv allure-$ALLURE_VERSION /opt/allure
           sudo ln -sf /opt/allure/bin/allure /usr/bin/allure
+      - name: 檢查 Chrome 和 ChromeDriver 版本
+        run: |
+          google-chrome --version
+          chromedriver --version
+      - name: 設定 Chrome 環境
+        uses: browser-actions/setup-chrome@latest
+        with:
+          chrome-version: 'stable'
+      - name: 檢查 Chrome 和 ChromeDriver 版本2
+        run: |
+          google-chrome --version
+          chromedriver --version
 
       - name: 執行 Pytest 測試
         env:
