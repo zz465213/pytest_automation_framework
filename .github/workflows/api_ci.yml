@@ -35,6 +35,8 @@ jobs:
           sudo ln -sf /opt/allure/bin/allure /usr/bin/allure
 
       - name: 執行 Pytest 測試
+        env:
+          MY_APP_PASSWORD: ${{ secrets.HEROKU_APP_PASSWORD }}
         run: |
           python run.py --test_type web --env local -m "web"
 
