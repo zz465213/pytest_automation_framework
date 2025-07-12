@@ -1,3 +1,4 @@
+import tempfile
 import logging
 import undetected_chromedriver as uc
 from configs import global_adapter
@@ -36,12 +37,16 @@ class DriverFactory:
         options = options_map[browser_type]
 
         # options選項設定
-        options.add_argument(global_adapter.SANDBOX)
-        options.add_argument(global_adapter.DEV_SHM_USE)
-        options.add_argument(global_adapter.GPU_USE)
-        options.add_argument(global_adapter.WINDOW_SIZE)
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--disable-gpu")
+        options.add_argument("--window-size=1920,1080")
         if global_adapter.HEADLESS:
             options.add_argument("--headless")
+
+        # 解決用戶資料目錄衝突問題
+        temp_dir = tempfile.mkdtemp()
+        options.add_argument(f"--user-data-dir={temp_dir}")
 
         # Chrome特定配置
         if browser_type == "chrome":

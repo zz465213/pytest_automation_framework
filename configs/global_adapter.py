@@ -19,11 +19,7 @@ COMPUTER_PLATFORM = platform.system() + " " + platform.release()
 PYTHON_VERSION = sys.version.split()[0]
 
 # ==== Web Driver 設定 ====
-SANDBOX = "--no-sandbox"
-DEV_SHM_USE = "--disable-dev-shm-usage"
-GPU_USE = "--disable-gpu"
-WINDOW_SIZE = "--window-size=1920,1080"
-HEADLESS = False  # 是否啟用無頭模式
+HEADLESS = True  # 是否啟用無頭模式
 CHROME_LOAD_STRATEGY = "eager"  # Chrome特定頁面加載策略(normal, eager, none)
 UNDETECTED_CHROME = False  # Chrome是否啟用防止偵測模式
 HIGH_LIGHT = False  # 如果True，再找到元件時進行高光處理
