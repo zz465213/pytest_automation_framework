@@ -3,7 +3,6 @@ import sys
 from utils.allure_factory import AllureFactory
 
 if __name__ == '__main__':
-    # TODO: 調整 CI yml 讀取到 URL
     # ---- 執行 Pytest ----
     arg = sys.argv[1:]
     pytest.main(arg)
