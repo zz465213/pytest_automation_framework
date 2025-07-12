@@ -38,7 +38,7 @@ jobs:
         env:
           HEROKU_APP_PASSWORD: ${{ secrets.HEROKU_APP_PASSWORD }}
         run: |
-          python run.py ${{ vars.$MARKER }}
+          python run.py ${{ vars.MARKER }}
 
       - name: Allure Report Artifact 下載
         uses: actions/upload-artifact@v4
